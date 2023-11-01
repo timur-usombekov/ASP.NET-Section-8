@@ -2,7 +2,7 @@
 @model CityWeather
 
 @{
-    ViewData["Title"] = Model.CityName;
+    ViewData["Title"] = Model?.CityName;
 }
 
 @if (Model != null)

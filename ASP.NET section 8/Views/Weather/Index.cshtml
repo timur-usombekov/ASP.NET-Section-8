@@ -1,5 +1,4 @@
-﻿@using ASP.NET_section_8.Models
-@model IEnumerable<CityWeather>
+﻿@model IEnumerable<CityWeather>
 
 @{
     //local function: get css class based on ranges of fahrenheit value as instructed in the requirement
@@ -23,17 +22,7 @@
         @foreach (CityWeather city in Model)
         {
             <div class="box cursor-pointer w-30 @GetCssClassByFahrenheit(city.TemperatureFahrenheit)">
-                <div class="flex-borderless">
-                    <div class="w-50">
-                        <h2>@city.CityName</h2>
-                        <h4 class="text-dark-grey">@city.DateAndTime.ToString()</h4>
-                        <a href="~/weather/@city.CityUniqueCode" class="margin-top">Details</a>
-                    </div>
-                    <div class="w-50 border-left">
-                        <h1 class="margin-left">@city.TemperatureFahrenheit <sup class="text-grey">&#8457</sup></h1>
-                    </div>
-                </div>
-
+                <partial name="_CityPartialView" model="city"/>
             </div>
         }
 

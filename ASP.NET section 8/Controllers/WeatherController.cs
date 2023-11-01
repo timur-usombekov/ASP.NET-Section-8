@@ -32,14 +32,6 @@ namespace ASP.NET_section_8.Controllers
                 new CityWeather() {CityUniqueCode = "PAR", CityName = "Paris", DateAndTime = new DateTime(2030, 01, 01, 9, 00, 00),  TemperatureFahrenheit = 82}
             };
 
-            if (!ModelState.IsValid)
-            {
-                string errors = string.Join("\n", ModelState.Values
-                    .SelectMany(value => value.Errors)
-                    .Select(err => err.ErrorMessage));
-                return BadRequest(errors);
-            }
-
             CityWeather? cityWeather = cityWeathers.Where(n => n.CityUniqueCode == cityuniq).FirstOrDefault();
             return View(cityWeather);
         }
